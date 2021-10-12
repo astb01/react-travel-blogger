@@ -54,7 +54,11 @@ const AllTravelBlogs = () => {
 
       {/* this is a comment */}
 
-      <TravelBlogList blogs={travelBlogs} />
+      {travelBlogs.length > 0 ? (
+        <TravelBlogList blogs={travelBlogs} />
+      ) : (
+        "There are no blogs"
+      )}
     </section>
   );
 };
