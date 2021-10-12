@@ -15,7 +15,7 @@ const MainNavigation = () => {
             <Link to="/new-travel-blog">Create New Travel Blog</Link>
           </li>
           <li>
-            <Link to="/bucket-list">All Travel Blogs</Link>
+            <Link to="/bucket-list">Bucket List</Link>
           </li>
         </ul>
       </nav>

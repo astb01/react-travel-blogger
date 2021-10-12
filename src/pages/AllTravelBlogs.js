@@ -23,9 +23,15 @@ const BLOG_DATA = [
 
 const AllTravelBlogs = () => {
   return (
-    <div>
+    <section>
       <h1>All Travel Blogs</h1>
-    </div>
+
+      <ul>
+        {BLOG_DATA.map((travelBlog) => {
+          return <li key={travelBlog.id}>{travelBlog.title}</li>;
+        })}
+      </ul>
+    </section>
   );
 };
 
