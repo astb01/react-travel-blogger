@@ -4,6 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import AllTravelBlogs from "./pages/AllTravelBlogs";
 import NewTravelBlog from "./pages/NewTravelBlog";
 import BucketList from "./pages/BucketList";
+
+// Layout:
 import Layout from "./components/layout/Layout";
 
 const App = () => {
