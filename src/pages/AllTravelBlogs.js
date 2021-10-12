@@ -25,12 +25,6 @@ const AllTravelBlogs = () => {
   return (
     <section>
       <h1>All Travel Blogs</h1>
-
-      <ul>
-        {BLOG_DATA.map((travelBlog) => {
-          return <li key={travelBlog.id}>{travelBlog.title}</li>;
-        })}
-      </ul>
     </section>
   );
 };
