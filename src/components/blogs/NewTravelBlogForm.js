@@ -19,6 +19,16 @@ const NewTravelBlogForm = () => {
     const enteredAddress = addressInputRef.current.value;
     const enteredCity = cityInputRef.current.value;
     const enteredDescription = descriptionRef.current.value;
+
+    const newTravelBlog = {
+      title: enteredTitle,
+      image: enteredImageUrl,
+      address: enteredAddress,
+      city: enteredCity,
+      description: enteredDescription,
+    };
+
+    console.log(newTravelBlog);
   };
 
   return (
