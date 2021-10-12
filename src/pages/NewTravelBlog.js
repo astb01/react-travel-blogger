@@ -1,11 +1,11 @@
-import React from "react";
+import { useHistory } from "react-router-dom";
 import NewTravelBlogForm from "../components/blogs/NewTravelBlogForm";
 
 const NewTravelBlog = () => {
+  const history = useHistory();
+
   const addNewTravelBlogHandler = (newBlogData) => {
     const apiUrl = process.env.REACT_APP_TRAVEL_API_URL;
-
-    console.log(apiUrl);
 
     fetch(apiUrl, {
       method: "POST",
@@ -13,6 +13,8 @@ const NewTravelBlog = () => {
       headers: {
         "Content-Type": "application/json",
       },
+    }).then(() => {
+      history.replace("/");
     });
   };
 
