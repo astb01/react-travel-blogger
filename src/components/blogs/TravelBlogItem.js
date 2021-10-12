@@ -13,11 +13,9 @@ const TravelBlogItem = ({ image, title, address, city, description, id }) => {
 
         <div className={classes.content}>
           <h3>{title}</h3>
-          <address>
-            {address} {city}
-          </address>
-
-          <p>{description}</p>
+          <address>{address}</address>
+          <address>{city}</address>
+          <p>&quot;{description}&quot;</p>
         </div>
 
         <div className={classes.actions}>
