@@ -1,33 +1,47 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import TravelBlogList from "../components/blogs/TravelBlogList";
 
-const BLOG_DATA = [
-  {
-    id: 1,
-    title: "This is my first trip to Marina Bay Sands",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Marina_Bay_Sands_in_the_evening_-_20101120.jpg/2560px-Marina_Bay_Sands_in_the_evening_-_20101120.jpg",
-    address: "Marina Bay Sands",
-    city: "Singapore",
-    description: "This place was ace!",
-  },
-  {
-    id: 2,
-    title: "This is my first trip to Marina Bay Sands",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Marina_Bay_Sands_in_the_evening_-_20101120.jpg/2560px-Marina_Bay_Sands_in_the_evening_-_20101120.jpg",
-    address: "Marina Bay Sands",
-    city: "Singapore",
-    description: "This place was ace!",
-  },
-];
-
 const AllTravelBlogs = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [travelBlogs, setTravelBlogs] = useState([]);
+
+  useEffect(() => {
+    const apiUrl = process.env.REACT_APP_TRAVEL_API_URL;
+
+    fetch(apiUrl)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const travelBlogs = [];
+
+        for (const key in data) {
+          const travelBlog = {
+            id: key,
+            ...data[key],
+          };
+
+          travelBlogs.push(travelBlog);
+        }
+
+        setIsLoading(false);
+        setTravelBlogs(travelBlogs);
+      });
+  }, []);
+
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading ....</p>
+      </section>
+    );
+  }
+
   return (
     <section>
       <h1>All Travel Blogs</h1>
 
-      <TravelBlogList blogs={BLOG_DATA} />
+      <TravelBlogList blogs={travelBlogs} />
     </section>
   );
 };
