@@ -41,6 +41,8 @@ const AllTravelBlogs = () => {
     <section>
       <h1>All Travel Blogs</h1>
 
+      {/* this is a comment */}
+
       <TravelBlogList blogs={travelBlogs} />
     </section>
   );
