@@ -1,4 +1,5 @@
 import React from "react";
+import TravelBlogList from "../components/blogs/TravelBlogList";
 
 const BLOG_DATA = [
   {
@@ -25,6 +26,8 @@ const AllTravelBlogs = () => {
   return (
     <section>
       <h1>All Travel Blogs</h1>
+
+      <TravelBlogList blogs={BLOG_DATA} />
     </section>
   );
 };
