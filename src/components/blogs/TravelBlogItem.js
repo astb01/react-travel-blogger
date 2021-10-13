@@ -1,9 +1,31 @@
-import React from "react";
+import { useContext } from "react";
 import Card from "../ui/Card";
 
 import classes from "./TravelBlogItem.module.css";
 
+import BucketListContext from "../../context/BucketListContext";
+
 const TravelBlogItem = ({ image, title, address, city, description, id }) => {
+  const bucketListContext = useContext(BucketListContext);
+  const isBlogInBucketList = bucketListContext.isBucketListItem(id);
+
+  const toggleBucketListHandler = () => {
+    console.log("isBlogInBucketList", id, isBlogInBucketList);
+
+    if (isBlogInBucketList) {
+      bucketListContext.removeBucketListItem(id);
+    } else {
+      bucketListContext.addBucketListItem({
+        id,
+        title,
+        image,
+        address,
+        city,
+        description,
+      });
+    }
+  };
+
   return (
     <li className={classes.item}>
       <Card>
@@ -19,7 +41,11 @@ const TravelBlogItem = ({ image, title, address, city, description, id }) => {
         </div>
 
         <div className={classes.actions}>
-          <button>To Bucket List</button>
+          <button onClick={toggleBucketListHandler}>
+            {isBlogInBucketList
+              ? "Remove from Bucket List"
+              : "Add To Bucket List"}
+          </button>
         </div>
       </Card>
     </li>
